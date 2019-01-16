@@ -12,14 +12,9 @@ for i in Split_data:
 
 
 #SetUID Check
-save_file2=open("SetUID Check.txt", "w")
-#에러발생...해결중..
-Check_su=subprocess.check_output('find / -user root -perm -4000 2> /dev/null', shell=True)
-save_file2.write(str(Check_su))
-
-
-
-
+Save_file2=open("SetUID Check.txt", "w")
+command="find / -user root -perm -4000 2> /dev/null"
+Check_su=subprocess.Popen(command, shell=True, stdout=save_file2, stderr=None)
 
 
 

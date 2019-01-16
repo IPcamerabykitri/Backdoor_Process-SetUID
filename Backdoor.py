@@ -1,9 +1,14 @@
 import subprocess
 
 #Process Check
-save_file1=open("Process Check.txt","w")
-Check_ps=subprocess.check_output('ps -ef', shell=True)
-save_file1.write(str_ps)
+Save_file=open("Process Check.txt","w")
+Check_ps=subprocess.check_output('ps -ef', shell=True, universal_newlines=True)
+Save_file.write(Check_ps)
+Split_data=Check_ps.split("\n")
+
+for i in Split_data:
+    if 'pts' in i:
+        print(i)
 
 
 #SetUID Check
